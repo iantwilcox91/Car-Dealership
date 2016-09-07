@@ -5,25 +5,31 @@ namespace Cars.Objects
 {
   class Car
   {
-    private string MakeModel;
+    private string _makeModel;
     private int Price;
     private int Miles;
-    private static List<string> _instances = new List<string>{};
+    private static List<Car> _instances = new List<Car>{};
 
     public Car(string newMakeModel, int newPrice, int newMiles)
     {
-      MakeModel = newMakeModel;
+      _makeModel = newMakeModel;
       Price = newPrice;
       Miles = newMiles;
     }
 
-    public int GetMakeModel()
+    public string GetMakeModel()
     {
-      return MakeModel;
+      return _makeModel;
     }
-    public void SetMakeModel(int newNumberMake)
+
+    public void SetMakeModel(string newNumberMake)
     {
-      MakeModel = newNumberMake;
+      _makeModel = newNumberMake;
+    }
+
+    public int GetPrice()
+    {
+      return Price;
     }
 // add price & miles
 
@@ -31,14 +37,16 @@ namespace Cars.Objects
 
 
 
-    public static List<string> GetAll()
+    public static List<Car> GetAll()
     {
       return _instances;
     }
+
     public void Save()
     {
       _instances.Add(this);
     }
+
     public static void ClearAll()
     {
       _instances.Clear();

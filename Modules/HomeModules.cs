@@ -1,6 +1,7 @@
 using Nancy;
-using Cars.Objects;
+using System;
 using System.Collections.Generic;
+using Cars.Objects;
 
 namespace Cars
 {
@@ -8,19 +9,23 @@ namespace Cars
   {
     public HomeModule()
     {
-      Get["/"] = _ => View["add_new_car.cshtml"];
-
+      Get["/"] = _ => {
+        return View["add_new_car.cshtml"];
+      };
+      
       Get["/view_all_cars"] = _ => {
-      List<string> _instances = _instances.GetAll();
-      return View["view_all_cars.cshtml"]
-      }
+      List<Car> _instances = Car.GetAll();
+      return View["view_all_cars.cshtml"];
+    };
 
-      Post["/Added"] = _ => {
+      Post["/added"] = _ => {
       string MakeModel = (Request.Form["MakeModel"]);
       int Price = (Request.Form["Price"]);
       int Miles = (Request.Form["Miles"]);
-      Car thisCar = new Car(MakeModel, Price, Miles);
-      return View["car_added.cshtml", thisCar];
+      Car newCar = new Car(MakeModel, Price, Miles);
+      // newCar.Save();
+      // Console.WriteLine(newCar.GetMakeModel());
+      return View["car_added.cshtml", newCar];
       };
 
       // Post["/cars_cleared"] = _ =>
