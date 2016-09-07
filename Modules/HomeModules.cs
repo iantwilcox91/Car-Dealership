@@ -12,7 +12,7 @@ namespace Cars
       Get["/"] = _ => {
         return View["add_new_car.cshtml"];
       };
-      
+
       Get["/view_all_cars"] = _ => {
       List<Car> _instances = Car.GetAll();
       return View["view_all_cars.cshtml"];
@@ -23,7 +23,7 @@ namespace Cars
       int Price = (Request.Form["Price"]);
       int Miles = (Request.Form["Miles"]);
       Car newCar = new Car(MakeModel, Price, Miles);
-      // newCar.Save();
+      newCar.Save();
       // Console.WriteLine(newCar.GetMakeModel());
       return View["car_added.cshtml", newCar];
       };

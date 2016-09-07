@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Cars.Objects
 {
-  class Car
+  public class Car
   {
     private string _makeModel;
     private int Price;
