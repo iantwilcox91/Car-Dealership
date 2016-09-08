@@ -1,8 +1,8 @@
 <h1>These are the cars in our lot</h1>
 <ul>
-  @for all the car objects
+  @foreach(var Car in Model)
   {
-    <li>?????@carsProbablyIDK??????</li>
+    <li> @Car.GetMakeModel() </li>
   }
 </ul>
 <p><a href="/">add another car</a></p>
